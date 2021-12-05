@@ -1,0 +1,21 @@
+$menuBackground: var(--menu-bg, #001529);
+$menuActiveBackground: var(--menu-active-bg, #4091f7);
+$menuHoverBackground: var(--menu-hover-bg, #4091f7);
+$menuTextColor: var(--menu-text-color, #9a9a9ae8);
+$menuActiveTextColor: var(--menu-active-text-color, #fff);
+$menuHoverTextColor: var(--menu-hover-text-color, #fff);
+$menuActiveBorderColor: var(--menu-active-border-color, #fff);
+$submenuBackground: var(--submenu-bg, #0f0303);
+$navbarBackground: var(--nav-bg, #fff);
+$navbarTextColor: var(--nav-text-color, #79798b);
+$navbarHoverTextColor: var(--nav-hover-text-color, #404040);
+$sidebarLogoBackground: var(--sidebar-logo-bg, #002140);
+$sidebarLogoTextColor: var(--sidebar-logo-text-color, #1890ff);
+$iconBackground: var(--icon-background, #f6f6f6);
+$iconHoverTextColor: var(--icon-hover-text-color, #2e2c2c);
+
+// 不同主题下的相同变量
+$smallFontSize: 13px;
+$sidebarLogoSize: 32px;
+$openSidebarWidth: 210px;
+$hideSidebarWidth: 60px;

@@ -1,0 +1,25 @@
+@import "./variables.scss";
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
+  color: $navbarTextColor;
+  background-color: $navbarBackground;
+  &:hover {
+    color: $navbarHoverTextColor;
+  }
+}
+
+.icon-shadow {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 6px 10px;
+  height: 100%;
+  &:hover {
+    cursor: pointer;
+    color: $iconHoverTextColor;
+    background-color: $iconBackground;
+  }
+}

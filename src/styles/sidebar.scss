@@ -1,0 +1,275 @@
+@import "./variables.scss";
+// vertical模式下主体内容距离网页文档左侧的距离
+@mixin merge-style($sideBarWidth) {
+  // 桌面
+  // 针对侧边栏的页面布局
+  .sidebar-container {
+    transition: all 0.3s;
+    width: $sideBarWidth;
+    background: $menuBackground;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1001;
+    overflow: hidden;
+    box-shadow: 0 0 1px #888;
+
+    &.has-logo {
+      .el-scrollbar {
+        height: calc(100% - 50px);
+      }
+    }
+  }
+  // 主页
+  .main-container {
+    position: relative;
+    height: 100vh;
+    min-height: 100%;
+    transition: margin-left 0.3s;
+    margin-left: $sideBarWidth;
+    background: #f0f2f5;
+
+    .fixedHeader {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 999;
+      width: calc(100% - $sideBarWidth);
+      transition: all 0.3s;
+
+      + .app-main {
+        top: 90px;
+        height: calc(100% - 90px);
+        &.app-main-hide-tabs {
+          top: 50px;
+          height: calc(100% - 50px);
+        }
+      }
+    }
+  }
+
+  .hideSideBar {
+    .sidebar-container {
+      width: 60px;
+
+      .sidebar-logo {
+        margin-right: 0;
+      }
+    }
+    .main-container {
+      margin-left: 60px;
+      .fixedHeader {
+        width: calc(100% - 60px);
+      }
+    }
+  }
+
+  @media screen and (min-width: 425px) and (max-width: 768px) {
+    // 平板
+  }
+  @media screen and (max-width: 425px) {
+    // 手机端
+    .mobile {
+      .sidebar-container {
+        width: $sideBarWidth;
+      }
+
+      .main-container {
+        margin-left: 0 !important;
+        .fixedHeader {
+          width: 100% !important;
+        }
+      }
+
+      &.hideSideBar {
+        .sidebar-container {
+          pointer-events: none;
+          transition-duration: 0.3s;
+          transform: translateX(-$sideBarWidth - 1px);
+        }
+      }
+    }
+  }
+}
+
+.scrollbar-wrapper {
+  // 防止出现横向滚动条
+  width: 99.99%;
+  overflow-x: hidden !important;
+}
+
+body {
+  &[layout="vertical"] {
+    $sideBarWidth: 210px;
+    @include merge-style($sideBarWidth);
+    .sidebar-logo-container {
+      height: 50px;
+    }
+    .navbar {
+      height: 50px;
+    }
+    .app-main {
+      position: relative;
+      transition: all 0.3s;
+      height: auto;
+    }
+    // 菜单样式
+    .el-menu {
+      .el-menu-item {
+        color: $menuTextColor;
+        background-color: $menuBackground;
+
+        &.is-active {
+          color: $menuActiveTextColor;
+          background: $menuActiveBackground;
+        }
+
+        &:hover {
+          color: $menuHoverTextColor;
+          background-color: $menuHoverBackground;
+        }
+      }
+      .el-sub-menu {
+        &.is-active {
+          > .el-sub-menu__title {
+            color: $menuActiveTextColor;
+          }
+        }
+
+        .el-sub-menu__title {
+          color: $menuTextColor;
+          background-color: $submenuBackground;
+          &:hover {
+            color: $menuHoverTextColor;
+          }
+        }
+
+        .el-menu--inline {
+          background-color: $submenuBackground;
+          .el-sub-menu__title {
+            font-size: $smallFontSize;
+            background-color: $submenuBackground;
+          }
+          .el-menu-item {
+            background-color: $submenuBackground;
+            font-size: $smallFontSize;
+            &.is-active {
+              color: $menuActiveTextColor;
+              background: $menuActiveBackground;
+            }
+            &:hover {
+              color: $menuHoverTextColor;
+              background: $menuHoverBackground;
+            }
+          }
+        }
+      }
+      & > .el-sub-menu {
+        & > .el-sub-menu__title {
+          background-color: $menuBackground;
+        }
+      }
+    }
+  }
+  &[layout="horizontal"] {
+    .sidebar-logo-container {
+      height: 61px;
+    }
+    .fixedHeader {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 999;
+      width: 100%;
+      transition: none !important;
+      & + .app-main {
+        top: 101px;
+        height: calc(100vh - 101px);
+        &.app-main-nofixed-header {
+          top: auto;
+          height: auto;
+        }
+        &.app-main-hide-tabs {
+          top: 61px;
+          height: calc(100vh - 61px);
+        }
+      }
+    }
+    .navbar {
+      height: 61px;
+    }
+    .app-main {
+      position: relative;
+      height: auto;
+      transition: all 0.3s;
+    }
+    .el-menu--horizontal {
+      background-color: $menuBackground;
+      > .el-menu-item {
+        &.is-active {
+          color: $menuActiveTextColor !important;
+          background-color: $menuActiveBackground;
+          border-bottom-color: $menuActiveBorderColor;
+        }
+      }
+      .el-menu-item {
+        color: $menuTextColor;
+        &.is-active {
+          color: $menuActiveTextColor !important;
+          background-color: $menuActiveBackground;
+        }
+        &:hover {
+          color: $menuHoverTextColor;
+          background-color: $menuHoverBackground;
+        }
+      }
+      > .el-sub-menu {
+        &.is-active {
+          .el-sub-menu__title {
+            color: $menuActiveTextColor;
+            border-bottom-color: $menuActiveBorderColor;
+          }
+        }
+        > .el-sub-menu__title {
+          color: $menuTextColor;
+
+          &:hover {
+            color: $menuHoverTextColor;
+            background-color: $menuBackground;
+          }
+        }
+      }
+      .el-menu--popup {
+        background-color: $submenuBackground;
+        .el-menu-item {
+          font-size: $smallFontSize;
+          background-color: $submenuBackground;
+          &.is-active {
+            color: $menuActiveTextColor;
+            background-color: $menuActiveBackground;
+          }
+          &:hover {
+            color: $menuHoverTextColor;
+            background-color: $menuHoverBackground;
+          }
+        }
+        .el-sub-menu {
+          &.is-active {
+            .el-sub-menu__title {
+              color: $menuActiveTextColor;
+            }
+          }
+          .el-sub-menu__title {
+            color: $menuTextColor;
+            background-color: $submenuBackground;
+            &:hover {
+              color: $menuHoverTextColor;
+            }
+          }
+        }
+      }
+    }
+  }
+}
