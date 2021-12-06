@@ -32,16 +32,23 @@ function onPwdBlur() {
 const onLogin = (): void => {
   // 验证用户名及密码
   if (user.value !== "" && pwd.value !== "") {
-    store
-      .dispatch("user/toLogin", {
-        user: user.value,
-        pwd: pwd.value,
-      })
-      .then((res) => {
-        if (res.code === 0) {
-          router.push("/");
-        }
-      });
+    // 开发环境(使用mock)
+    // store
+    //   .dispatch("user/toLogin", {
+    //     user: user.value,
+    //     pwd: pwd.value,
+    //   })
+    //   .then((res) => {
+    //     if (res.code === 0) {
+    //       router.push("/");
+    //     }
+    //   });
+    // 生产环境测试
+    store.commit("user/UPDATE_USER_INFO", {
+      user: "admin",
+      accessToken: "123456",
+    });
+    router.push("/");
   }
 };
 </script>

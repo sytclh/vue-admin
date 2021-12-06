@@ -83,7 +83,7 @@ router.beforeEach(async (to, from, next) => {
         next();
       } else {
         // 重定向到/login
-        store.dispatch("user/toLogout");
+        // store.dispatch("user/toLogout");
         next({
           path: "/login",
           replace: true,
@@ -91,7 +91,7 @@ router.beforeEach(async (to, from, next) => {
       }
     } else {
       // 输入 /login
-      store.dispatch("user/toLogout");
+      // store.dispatch("user/toLogout");
       next();
     }
   }

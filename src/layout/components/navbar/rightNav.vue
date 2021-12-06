@@ -5,7 +5,7 @@ import International from "./international/index.vue";
 import Setting from "./setting/index.vue";
 import Avatar from "./avatar/index.vue";
 import { useStore } from "@/store";
-import { computed, reactive } from "vue";
+import { computed } from "vue";
 const store = useStore();
 const settingConfig = computed(() => ({
   fixedHeader: store.state.fixedHeader,

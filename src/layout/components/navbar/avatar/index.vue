@@ -26,7 +26,11 @@ const logout = () => {
 </script>
 
 <template>
-  <el-dropdown class="avatar-container icon-shadow" trigger="click">
+  <el-dropdown
+    class="avatar-container icon-shadow"
+    trigger="click"
+    placement="bottom-end"
+  >
     <el-avatar>
       {{ user }}
     </el-avatar>

@@ -200,6 +200,9 @@ body {
     .navbar {
       height: 61px;
     }
+    .right-nav-container {
+      background-color: $menuBackground;
+    }
     .app-main {
       position: relative;
       height: auto;

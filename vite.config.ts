@@ -36,6 +36,12 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
       port: VITE_PORT,
       open: true,
     },
+    build: {
+      sourcemap: false,
+      minify: "esbuild",
+      brotliSize: false,
+      chunkSizeWarningLimit: 2000,
+    },
     plugins: [
       vue(),
       ElementPlus(),

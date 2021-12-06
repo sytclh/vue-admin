@@ -26,7 +26,7 @@
       "@mocks/*": ["mocks/*"],
       "@typings/*": ["typings/*"]
     },
-    "types": ["element-plus/global", "vite/client"],
+    "types": ["vite/client"],
     "typeRoots": ["./node_modules/@types", "./typings"]
   },
   "include": [
